@@ -14,12 +14,14 @@ public final class Constants {
   }
 
   public static final class ArmConstants {
-    public static final int kMotorPort = 4;
+    public static final int kArmMotorPort = 4;
     public static final double kOpenSpeed = -1;
     public static final double kCloseSpeed = 1;
     public static final double kEncoderOffset = 0.0;
     public static final int kEncoderCA = 0;
     public static final int kEncoderCB = 1;
+    public static final double kMaxLimit = 0.4;
+    public static final double kMinLimit = 0.0;
   }
 
   public static class OIConstants {
