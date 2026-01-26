@@ -25,25 +25,16 @@ public class ArmSubsystem extends SubsystemBase {
     }
 
     @Override
-    public void periodic() {
-        double currentAngle = armEncoder.getDistance() * 360;
-        double error = targetAngle - currentAngle;
+public void periodic() {
+    double currentAngle = armEncoder.getDistance() * 360;
+    
+    double output = pidController.calculate(currentAngle, targetAngle);
 
-        if (Math.abs(error) < 1.0) {
-            armMotor.set(ControlMode.PercentOutput, 0);
-            return;
-        }
+    if (currentAngle <= 0 && output < 0) output = 0;
+    if (currentAngle >= 90 && output > 0) output = 0;
 
-        double output = pidController.calculate(currentAngle, targetAngle);
-
-        if (output < 0 && currentAngle <= 0) {
-            output = 0;
-        } else if (output > 0 && currentAngle >= 90) {
-            output = 0;
-        }   
-
-        armMotor.set(ControlMode.PercentOutput, clamp(output, -0.3, 0.3));
-    }
+    armMotor.set(ControlMode.PercentOutput, clamp(output, -0.4, 0.4));
+}
 
     private double clamp(double value, double min, double max) {
         return Math.max(min, Math.min(max, value));

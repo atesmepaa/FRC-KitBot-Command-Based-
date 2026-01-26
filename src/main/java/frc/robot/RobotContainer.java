@@ -31,9 +31,6 @@ public class RobotContainer {
     buttonA.whileTrue(new ArmCmd(armSubsystem, OIConstants.ANGLE_LOW));
 
     JoystickButton buttonB = new JoystickButton(joystick, 2);
-    buttonB.whileTrue(new ArmCmd(armSubsystem, OIConstants.ANGLE_MID));
-
-    JoystickButton buttonX = new JoystickButton(joystick, 3);
-    buttonX.whileTrue(new ArmCmd(armSubsystem, OIConstants.ANGLE_HIGH));
+    buttonB.whileTrue(new ArmCmd(armSubsystem, OIConstants.ANGLE_HIGH));
   }
 }

@@ -30,7 +30,6 @@ public final class Constants {
     public static final int kArcadeDriveTurnAxis = 3;
     public static final int kArmCloseButtonIdx = 5;
     public static final double ANGLE_LOW = 0;
-    public static final double ANGLE_MID = 45;
-    public static final double ANGLE_HIGH = 90;
+    public static final double ANGLE_HIGH = 70;
   }
 }
