@@ -29,7 +29,7 @@ public class DriveTrainCmd extends Command {
 
         double left = realTimeSpeed + realTimeTurn;
         double right = realTimeSpeed - realTimeTurn;
-        driveSubsystem.tankDrive(left, right);
+        driveSubsystem.arcadeDrive(left, right);
     }
 
     @Override

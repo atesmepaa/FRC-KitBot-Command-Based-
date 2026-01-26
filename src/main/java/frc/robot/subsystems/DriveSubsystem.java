@@ -12,24 +12,15 @@ import frc.robot.Constants.DriveConstants;
 public class DriveSubsystem extends SubsystemBase {
 
   private VictorSP leftMaster = new VictorSP(DriveConstants.kLeftMotorMasterPort);
-  private VictorSP leftSlave = new VictorSP(DriveConstants.kLeftMotorSlavePort);
   private VictorSP rightMaster = new VictorSP(DriveConstants.kRightMotorMasterPort);
-  private VictorSP rightSlave = new VictorSP(DriveConstants.kRightMotorSlavePort);
 
-  private DifferentialDrive drive = new DifferentialDrive(leftMaster, rightMaster);
+  private DifferentialDrive drive = new DifferentialDrive(leftMaster::set, rightMaster::set);
 
   public DriveSubsystem(){
-    leftMaster.addFollower(leftSlave);
-    rightMaster.addFollower(rightSlave);
-
     rightMaster.setInverted(true);
   }
 
   public void arcadeDrive(double speed, double rotation){
     drive.arcadeDrive(speed, rotation);
-  }
-
-  public void tankDrive(double leftSpeed, double rightSpeed) {
-    drive.tankDrive(leftSpeed, rightSpeed);
   }
 }
